@@ -2466,6 +2466,7 @@ This creates a table cell containing the value **90**.
 ---
 
 ⬆️ **Back to:** [Table of Contents](#-table-of-contents)
+
 ---
 ---
 
@@ -3501,6 +3502,7 @@ When using Web Components, the `<slot>` element acts as a placeholder where cont
 ---
 
 ⬆️ **Back to:** [Table of Contents](#-table-of-contents)
+
 ---
 ---
 
@@ -3903,6 +3905,7 @@ Older browsers display the pronunciation inside parentheses.
 ---
 
 ⬆️ **Back to:** [Table of Contents](#-table-of-contents)
+
 ---
 ---
 
