@@ -3499,12 +3499,6 @@ When using Web Components, the `<slot>` element acts as a placeholder where cont
 
 ---
 
-🎉 **Congratulations!**
-
-You have now learned the most commonly used HTML elements, from creating a basic webpage to building forms, tables, navigation, media, and semantic layouts. Keep practicing by creating your own webpages and experimenting with different HTML tags.
-
----
-
 ⬆️ **Back to:** [Table of Contents](#-table-of-contents)
 ---
 ---
