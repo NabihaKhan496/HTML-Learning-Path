@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+    content="Interactive HTML Reference Guide for beginners. Learn HTML tags through examples and live demonstrations.">
+
+<meta name="author" content="HTML Reference Guide">
+
+<title>HTML Reference Guide | Interactive Learning</title>
+
+<base target="_self">
+
+<link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+
+<style>
+
+    /* =========================
+       CSS VARIABLES
+    ========================== */
+    
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --surface-2: #eef2ff;
+        --text: #172033;
+        --muted: #64748b;
+        --primary: #4f46e5;
+        --primary-dark: #3730a3;
+        --border: #e2e8f0;
+        --shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+        --radius: 20px;
+    }
+
+    body.dark {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --surface-2: #273449;
+        --text: #f8fafc;
+        --muted: #94a3b8;
+        --primary: #818cf8;
+        --primary-dark: #6366f1;
+        --border: #334155;
+        --shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img,
+    video,
+    iframe,
+    object,
+    embed {
+        max-width: 100%;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+        font: inherit;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+        min-height: 90vh;
+        padding: 24px 7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+            radial-gradient(circle at top right, #6366f1 0%, transparent 35%),
+            linear-gradient(135deg, #111827, #312e81);
+        color: white;
+        overflow: hidden;
+    }
+
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .top-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .icon-button,
+    .primary-button,
+    .secondary-button {
+        border: none;
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 12px 18px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .icon-button:hover,
+    .primary-button:hover,
+    .secondary-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .icon-button {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+    }
+
+    .hero {
+        max-width: 850px;
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 7vw, 6rem);
+        line-height: 1;
+        margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+        color: #a5b4fc;
+    }
+
+    .hero p {
+        max-width: 700px;
+        font-size: 1.15rem;
+        color: #dbeafe;
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .primary-button {
+        background: white;
+        color: #312e81;
+        font-weight: 700;
+    }
+
+    .secondary-button {
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 14px 7%;
+        background: color-mix(in srgb, var(--surface) 90%, transparent);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+        background: var(--surface-2);
+        color: var(--primary);
+    }
+
+    /* =========================
+       LAYOUT
+    ========================== */
+
+    main {
+        width: min(1400px, 90%);
+        margin: auto;
+    }
+
+    section {
+        padding: 90px 0;
+        scroll-margin-top: 80px;
+    }
+
+    .section-heading {
+        max-width: 800px;
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        margin-bottom: 10px;
+    }
+
+    .section-heading p {
+        color: var(--muted);
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, border 0.25s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        border-color: var(--primary);
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: var(--muted);
+    }
+
+    /* =========================
+       TAG SEARCH
+    ========================== */
+
+    .search-box {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 15px 18px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        color: var(--text);
+        outline: none;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 15%, transparent);
+    }
+
+    .tag-card {
+        cursor: pointer;
+    }
+
+    .tag-name {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: var(--surface-2);
+        color: var(--primary);
+        font-family: monospace;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    /* =========================
+       TEXT DEMO
+    ========================== */
+
+    .demo-text {
+        font-size: 1.1rem;
+    }
+
+    .demo-text code,
+    .demo-text kbd,
+    .demo-text samp,
+    .demo-text var {
+        padding: 3px 7px;
+        border-radius: 6px;
+        background: var(--surface-2);
+    }
+
+    blockquote {
+        margin: 20px 0;
+        padding: 20px;
+        border-left: 5px solid var(--primary);
+        background: var(--surface-2);
+        border-radius: 0 12px 12px 0;
+    }
+
+    /* =========================
+       LISTS
+    ========================== */
+
+    ul,
+    ol {
+        padding-left: 22px;
+    }
+
+    dl dt {
+        font-weight: 800;
+        color: var(--primary);
+    }
+
+    dl dd {
+        margin-bottom: 12px;
+        color: var(--muted);
+    }
+
+    /* =========================
+       MEDIA
+    ========================== */
+
+    figure {
+        margin: 0;
+    }
+
+    figure img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    figcaption {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    iframe {
+        width: 100%;
+        min-height: 250px;
+        border: 0;
+        border-radius: 15px;
+    }
+
+    audio,
+    video {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    /* =========================
+       TABLE
+    ========================== */
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    caption {
+        padding: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+    }
+
+    th {
+        background: var(--surface-2);
+        color: var(--primary);
+    }
+
+    tr:hover td {
+        background: color-mix(in srgb, var(--primary) 5%, transparent);
+    }
+
+    /* =========================
+       FORMS
+    ========================== */
+
+    fieldset {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+    }
+
+    legend {
+        padding: 0 10px;
+        font-weight: 800;
+        color: var(--primary);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .form-group.full {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 13px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--primary);
+    }
+
+    button {
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+    }
+
+    /* =========================
+       PROGRESS
+    ========================== */
+
+    progress,
+    meter {
+        width: 100%;
+        height: 20px;
+        margin: 10px 0 20px;
+    }
+
+    /* =========================
+       CANVAS
+    ========================== */
+
+    canvas {
+        width: 100%;
+        max-width: 600px;
+        height: 250px;
+        background: var(--surface-2);
+        border-radius: 15px;
+        border: 1px solid var(--border);
+    }
+
+    /* =========================
+       SVG
+    ========================== */
+
+    .svg-demo {
+        width: 100%;
+        min-height: 250px;
+        display: grid;
+        place-items: center;
+        background: var(--surface-2);
+        border-radius: 15px;
+    }
+
+    /* =========================
+       DIALOG
+    ========================== */
+
+    dialog {
+        border: none;
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 450px;
+        background: var(--surface);
+        color: var(--text);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    }
+
+    dialog::backdrop {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(5px);
+    }
+
+    /* =========================
+       DETAILS
+    ========================== */
+
+    details {
+        padding: 16px 20px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+    }
+
+    details + details {
+        margin-top: 12px;
+    }
+
+    summary {
+        cursor: pointer;
+        font-weight: 800;
+        color: var(--primary);
+    }
+
+    /* =========================
+       DEPRECATED
+    ========================== */
+
+    .deprecated {
+        border-color: #f97316;
+    }
+
+    .deprecated .tag-name {
+        color: #ea580c;
+        background: #ffedd5;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+        padding: 50px 7%;
+        background: #111827;
+        color: white;
+    }
+
+    footer a {
+        color: #a5b4fc;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+
+    /* =========================
+       BACK TO TOP
+    ========================== */
+
+    #backToTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        display: none;
+        z-index: 100;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 700px) {
+
+        header {
+            min-height: 85vh;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group.full {
+            grid-column: auto;
+        }
+
+        .nav-inner {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .hero {
+            padding: 50px 0;
+        }
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<noscript>
+    <div style="padding: 20px; background: #fee2e2; color: #991b1b; text-align: center;">
+        Please enable JavaScript to use all interactive features of this website.
+    </div>
+</noscript>
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<header id="home">
+
+    <div class="topbar">
+
+        <div class="logo">
+            🌐 HTML Reference Guide
+        </div>
+
+        <div class="top-actions">
+
+            <button class="icon-button" id="themeToggle" type="button">
+                🌙 Theme
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero">
+
+        <h1>
+            Learn HTML.<br>
+            <span>Build the Web.</span>
+        </h1>
+
+        <p>
+            An interactive HTML reference guide designed for beginners,
+            students, developers, and anyone preparing for web development interviews.
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#explorer" class="primary-button">
+                Explore HTML Tags
+            </a>
+
+            <a href="#playground" class="secondary-button">
+                Try Interactive Demo
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<nav>
+
+    <div class="nav-inner">
+
+        <strong>HTML Reference</strong>
+
+        <div class="nav-links">
+
+            <a href="#structure">Structure</a>
+            <a href="#text">Text</a>
+            <a href="#lists">Lists</a>
+            <a href="#media">Media</a>
+            <a href="#tables">Tables</a>
+            <a href="#forms">Forms</a>
+            <a href="#playground">Playground</a>
+            <a href="#deprecated">Deprecated</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================== -->
+
+<main>
+
+    <!-- INTRO -->
+
+    <section id="structure">
+
+        <div class="section-heading">
+
+            <h2>HTML Document Structure</h2>
+
+            <p>
+                Every webpage starts with a basic HTML structure.
+                HTML uses elements to organize content and give meaning to a webpage.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <article class="card">
+
+                <span class="tag-name">&lt;!DOCTYPE html&gt;</span>
+
+                <h3>HTML5 Declaration</h3>
+
+                <p>
+                    Tells the browser that the document uses modern HTML5.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <span class="tag-name">&lt;html&gt;</span>
+
+                <h3>Root Element</h3>
+
+                <p>
+                    Contains every other element in the webpage.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <span class="tag-name">&lt;head&gt;</span>
+
+                <h3>Page Information</h3>
+
+                <p>
+                    Contains metadata, title, styles, and linked resources.
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <span class="tag-name">&lt;body&gt;</span>
+
+                <h3>Visible Content</h3>
+
+                <p>
+                    Contains everything users see and interact with.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- TAG EXPLORER -->
+
+    <section id="explorer">
+
+        <div class="section-heading">
+
+            <h2>🔎 HTML Tag Explorer</h2>
+
+            <p>
+                Search through common HTML elements and click a card to learn more.
+            </p>
+
+        </div>
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="tagSearch"
+                placeholder="Search tags like form, table, video, canvas..."
+                aria-label="Search HTML tags">
+
+        </div>
+
+        <div class="grid" id="tagGrid">
+
+            <article class="card tag-card" data-tag="h1 heading title">
+                <span class="tag-name">&lt;h1&gt;–&lt;h6&gt;</span>
+                <h3>Headings</h3>
+                <p>Creates different levels of headings.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="p paragraph text">
+                <span class="tag-name">&lt;p&gt;</span>
+                <h3>Paragraph</h3>
+                <p>Creates a paragraph of text.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="strong b em i mark text">
+                <span class="tag-name">&lt;strong&gt; &lt;em&gt;</span>
+                <h3>Text Semantics</h3>
+                <p>Give text importance and emphasis.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="ul ol li list">
+                <span class="tag-name">&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</span>
+                <h3>Lists</h3>
+                <p>Create ordered and unordered lists.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="a nav link navigation">
+                <span class="tag-name">&lt;a&gt; &lt;nav&gt;</span>
+                <h3>Navigation</h3>
+                <p>Connect pages and sections together.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="img picture figure media">
+                <span class="tag-name">&lt;img&gt; &lt;picture&gt;</span>
+                <h3>Images</h3>
+                <p>Display responsive images and media.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="table tr th td">
+                <span class="tag-name">&lt;table&gt;</span>
+                <h3>Tables</h3>
+                <p>Organize data into rows and columns.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="form input textarea button">
+                <span class="tag-name">&lt;form&gt;</span>
+                <h3>Forms</h3>
+                <p>Collect user information and input.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="header main section article aside footer">
+                <span class="tag-name">&lt;main&gt;</span>
+                <h3>Semantic HTML</h3>
+                <p>Describe the meaning of page sections.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="script template noscript slot">
+                <span class="tag-name">&lt;script&gt;</span>
+                <h3>Scripting</h3>
+                <p>Add JavaScript and reusable templates.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="details summary dialog progress meter">
+                <span class="tag-name">&lt;details&gt;</span>
+                <h3>Interactive Elements</h3>
+                <p>Create expandable and interactive components.</p>
+            </article>
+
+            <article class="card tag-card" data-tag="canvas svg drawing graphics">
+                <span class="tag-name">&lt;canvas&gt;</span>
+                <h3>Graphics</h3>
+                <p>Create drawings, charts, and animations.</p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- TEXT -->
+
+    <section id="text">
+
+        <div class="section-heading">
+
+            <h2>✍️ Text Formatting & Semantics</h2>
+
+            <p>
+                HTML provides many elements for giving text meaning and visual structure.
+            </p>
+
+        </div>
+
+        <article class="card demo-text">
+
+            <p>
+                <strong>HTML is important.</strong>
+                <b>Bold text</b>,
+                <em>emphasized text</em>,
+                <i>italic text</i>,
+                <mark>highlighted text</mark>,
+                <small>small text</small>.
+            </p>
+
+            <p>
+                Old price:
+                <del>$100</del>
+                New price:
+                <ins>$80</ins>
+            </p>
+
+            <p>
+                Water is H<sub>2</sub>O and mathematics uses x<sup>2</sup>.
+            </p>
+
+            <p>
+                Use <code>console.log()</code> to display output.
+                Press <kbd>Ctrl + C</kbd>.
+                Output:
+                <samp>Hello World</samp>.
+            </p>
+
+            <p>
+                A mathematical variable is represented by
+                <var>x</var>.
+            </p>
+
+            <p>
+                <abbr title="HyperText Markup Language">HTML</abbr>
+                is the language of the web.
+            </p>
+
+            <p>
+                I am reading <cite>HTML Reference Guide</cite>.
+            </p>
+
+            <blockquote>
+                “Learning never stops.”
+            </blockquote>
+
+            <p>
+                This is a <q>short quotation</q>.
+            </p>
+
+            <address>
+                Contact: learn@example.com
+            </address>
+
+            <p>
+                supercalifragilistic<wbr>expialidocious
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- LISTS -->
+
+    <section id="lists">
+
+        <div class="section-heading">
+
+            <h2>📚 Lists</h2>
+
+            <p>
+                HTML supports unordered, ordered, and description lists.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <article class="card">
+
+                <h3>Unordered List</h3>
+
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Ordered List</h3>
+
+                <ol>
+                    <li>Learn HTML</li>
+                    <li>Practice CSS</li>
+                    <li>Build Projects</li>
+                </ol>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Description List</h3>
+
+                <dl>
+
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language</dd>
+
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets</dd>
+
+                    <dt>JS</dt>
+                    <dd>JavaScript</dd>
+
+                </dl>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEDIA -->
+
+    <section id="media">
+
+        <div class="section-heading">
+
+            <h2>🖼️ Images & Media</h2>
+
+            <p>
+                HTML can display images, audio, video, embedded content, and graphics.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <figure class="card">
+
+                <picture>
+
+                    <source
+                        media="(min-width: 800px)"
+                        srcset="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700"
+                        alt="Modern workspace">
+
+                </picture>
+
+                <figcaption>
+                    Responsive image using picture, source, img, and figcaption.
+                </figcaption>
+
+            </figure>
+
+            <article class="card">
+
+                <h3>Audio</h3>
+
+                <audio controls>
+
+                    <source src="audio.mp3" type="audio/mpeg">
+
+                    Your browser does not support the audio element.
+
+                </audio>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Video</h3>
+
+                <video controls poster="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700">
+
+                    <source src="video.mp4" type="video/mp4">
+
+                    <track
+                        src="subtitles.vtt"
+                        kind="subtitles"
+                        srclang="en"
+                        label="English">
+
+                    Your browser does not support the video element.
+
+                </video>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Iframe</h3>
+
+                <iframe
+                    src="https://www.example.com"
+                    title="Example website">
+                </iframe>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- TABLES -->
+
+    <section id="tables">
+
+        <div class="section-heading">
+
+            <h2>📊 Tables</h2>
+
+            <p>
+                Tables organize structured data into rows and columns.
+            </p>
+
+        </div>
+
+        <div class="card table-wrapper">
+
+            <table>
+
+                <caption>Student Progress</caption>
+
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Progress</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Rifa</td>
+                        <td>HTML</td>
+                        <td>90%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Nabiha</td>
+                        <td>CSS</td>
+                        <td>80%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Riad</td>
+                        <td>JavaScript</td>
+                        <td>70%</td>
+                    </tr>
+
+                </tbody>
+
+                <tfoot>
+
+                    <tr>
+                        <td colspan="2">Average Progress</td>
+                        <td>80%</td>
+                    </tr>
+
+                </tfoot>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FORMS -->
+
+    <section id="forms">
+
+        <div class="section-heading">
+
+            <h2>📝 Forms & Input</h2>
+
+            <p>
+                Try the form below. The result will appear dynamically using JavaScript.
+            </p>
+
+        </div>
+
+        <form class="card" id="studentForm">
+
+            <fieldset>
+
+                <legend>Student Registration</legend>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="name">Name</label>
+
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email</label>
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="course">Course</label>
+
+                        <select id="course" name="course">
+
+                            <optgroup label="Frontend">
+
+                                <option>HTML</option>
+                                <option>CSS</option>
+                                <option>JavaScript</option>
+
+                            </optgroup>
+
+                            <optgroup label="Backend">
+
+                                <option>Node.js</option>
+                                <option>Python</option>
+
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="browser">Favorite Browser</label>
+
+                        <input
+                            list="browsers"
+                            id="browser"
+                            placeholder="Choose a browser">
+
+                        <datalist id="browsers">
+
+                            <option value="Chrome">
+                            <option value="Firefox">
+                            <option value="Edge">
+                            <option value="Safari">
+
+                        </datalist>
+
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label for="message">Message</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Write something..."></textarea>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <button type="submit">
+                    Submit Form
+                </button>
+
+                <button type="reset">
+                    Reset
+                </button>
+
+                <output id="formOutput"></output>
+
+            </fieldset>
+
+        </form>
+
+    </section>
+
+
+    <!-- PLAYGROUND -->
+
+    <section id="playground">
+
+        <div class="section-heading">
+
+            <h2>🎮 Interactive HTML Playground</h2>
+
+            <p>
+                Experiment with native HTML elements.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <article class="card">
+
+                <h3>Expandable Content</h3>
+
+                <details>
+
+                    <summary>
+                        Click to learn more
+                    </summary>
+
+                    <p>
+                        The details element creates content that can be expanded and collapsed.
+                    </p>
+
+                </details>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Progress</h3>
+
+                <label for="progressBar">
+                    Learning Progress
+                </label>
+
+                <progress
+                    id="progressBar"
+                    value="75"
+                    max="100">
+                </progress>
+
+                <label for="skillMeter">
+                    HTML Skill Level
+                </label>
+
+                <meter
+                    id="skillMeter"
+                    value="80"
+                    min="0"
+                    max="100">
+                </meter>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Data Element</h3>
+
+                <p>
+                    Product:
+                    <data value="101">
+                        HTML Course
+                    </data>
+                </p>
+
+                <p>
+                    Arabic text:
+                    <bdi>مرحبا</bdi>
+                </p>
+
+                <p>
+                    Direction override:
+                    <bdo dir="rtl">
+                        HTML
+                    </bdo>
+                </p>
+
+            </article>
+
+            <article class="card">
+
+                <h3>Ruby Annotation</h3>
+
+                <ruby>
+
+                    漢
+                    <rp>(</rp>
+                    <rt>Kan</rt>
+                    <rp>)</rp>
+
+                </ruby>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CANVAS -->
+
+    <section>
+
+        <div class="section-heading">
+
+            <h2>🎨 Canvas & SVG</h2>
+
+            <p>
+                HTML can create graphics using canvas and SVG.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <article class="card">
+
+                <h3>Canvas Drawing</h3>
+
+                <canvas id="myCanvas" width="600" height="250"></canvas>
+
+                <br><br>
+
+                <button id="drawButton">
+                    Draw on Canvas
+                </button>
+
+            </article>
+
+            <article class="card">
+
+                <h3>SVG Graphic</h3>
+
+                <div class="svg-demo">
+
+                    <svg
+                        width="220"
+                        height="220"
+                        viewBox="0 0 220 220">
+
+                        <circle
+                            cx="110"
+                            cy="110"
+                            r="80"
+                            fill="#4f46e5">
+
+                        </circle>
+
+                        <circle
+                            cx="80"
+                            cy="90"
+                            r="12"
+                            fill="white">
+
+                        </circle>
+
+                        <circle
+                            cx="140"
+                            cy="90"
+                            r="12"
+                            fill="white">
+
+                        </circle>
+
+                        <path
+                            d="M 70 135 Q 110 170 150 135"
+                            fill="none"
+                            stroke="white"
+                            stroke-width="8">
+
+                        </path>
+
+                    </svg>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- SCRIPT & TEMPLATE -->
+
+    <section>
+
+        <div class="section-heading">
+
+            <h2>⚙️ Scripting & Templates</h2>
+
+            <p>
+                JavaScript can create dynamic content from reusable HTML templates.
+            </p>
+
+        </div>
+
+        <article class="card">
+
+            <button id="templateButton">
+                Add Learning Card
+            </button>
+
+            <div id="templateContainer"></div>
+
+            <template id="learningTemplate">
+
+                <article class="card" style="margin-top: 20px;">
+
+                    <h3>🚀 New Learning Card</h3>
+
+                    <p>
+                        This card was created from a
+                        <code>&lt;template&gt;</code>
+                        using JavaScript.
+                    </p>
+
+                </article>
+
+            </template>
+
+        </article>
+
+    </section>
+
+
+    <!-- DIALOG -->
+
+    <section>
+
+        <div class="section-heading">
+
+            <h2>💬 Dialog</h2>
+
+        </div>
+
+        <article class="card">
+
+            <button id="openDialog">
+                Open Dialog
+            </button>
+
+            <dialog id="welcomeDialog">
+
+                <h3>Welcome to HTML!</h3>
+
+                <p>
+                    You are exploring native HTML interactive elements.
+                </p>
+
+                <br>
+
+                <button id="closeDialog">
+                    Close
+                </button>
+
+            </dialog>
+
+        </article>
+
+    </section>
+
+
+    <!-- DEPRECATED -->
+
+    <section id="deprecated">
+
+        <div class="section-heading">
+
+            <h2>⚠️ Deprecated HTML Tags</h2>
+
+            <p>
+                These elements are useful to recognize in older websites,
+                but modern projects should use CSS and semantic HTML instead.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;font&gt;</span>
+
+                <h3>Use CSS Instead</h3>
+
+                <p>
+                    Old way of changing font color and size.
+                </p>
+
+            </article>
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;center&gt;</span>
+
+                <h3>Use text-align</h3>
+
+                <p>
+                    Modern CSS uses text-align: center.
+                </p>
+
+            </article>
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;marquee&gt;</span>
+
+                <h3>Use CSS Animation</h3>
+
+                <p>
+                    Scrolling text should be created with modern CSS.
+                </p>
+
+            </article>
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;tt&gt;</span>
+
+                <h3>Use &lt;code&gt;</h3>
+
+                <p>
+                    Use semantic code elements instead.
+                </p>
+
+            </article>
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;strike&gt;</span>
+
+                <h3>Use &lt;del&gt;</h3>
+
+                <p>
+                    Use the semantic deletion element.
+                </p>
+
+            </article>
+
+            <article class="card deprecated">
+
+                <span class="tag-name">&lt;acronym&gt;</span>
+
+                <h3>Use &lt;abbr&gt;</h3>
+
+                <p>
+                    Use abbreviation semantics.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>🌐 HTML Reference Guide</h3>
+
+            <p>
+                Learn HTML by reading, experimenting, and building.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#explorer">Tag Explorer</a>
+                </li>
+
+                <li>
+                    <a href="#playground">Playground</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <hr>
+
+    <small>
+        © 2026 HTML Reference Guide. Built for learning HTML.
+    </small>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<button id="backToTop" title="Back to top">
+    ↑
+</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    /* =========================
+       DARK MODE
+    ========================== */
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    themeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+        themeToggle.textContent =
+            isDark ? "☀️ Light" : "🌙 Theme";
+
+        localStorage.setItem(
+            "theme",
+            isDark ? "dark" : "light"
+        );
+
+    });
+
+    if (localStorage.getItem("theme") === "dark") {
+
+        document.body.classList.add("dark");
+
+        themeToggle.textContent = "☀️ Light";
+
+    }
+
+
+    /* =========================
+       TAG SEARCH
+    ========================== */
+
+    const searchInput =
+        document.getElementById("tagSearch");
+
+    const tagCards =
+        document.querySelectorAll(".tag-card");
+
+    searchInput.addEventListener("input", () => {
+
+        const searchTerm =
+            searchInput.value.toLowerCase().trim();
+
+        tagCards.forEach(card => {
+
+            const tagData =
+                card.dataset.tag.toLowerCase();
+
+            card.style.display =
+                tagData.includes(searchTerm)
+                    ? "block"
+                    : "none";
+
+        });
+
+    });
+
+
+    /* =========================
+       FORM OUTPUT
+    ========================== */
+
+    const studentForm =
+        document.getElementById("studentForm");
+
+    const formOutput =
+        document.getElementById("formOutput");
+
+    studentForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name").value;
+
+        const course =
+            document.getElementById("course").value;
+
+        formOutput.textContent =
+            `Welcome, ${name}! You selected ${course}.`;
+
+    });
+
+
+    /* =========================
+       CANVAS
+    ========================== */
+
+    const canvas =
+        document.getElementById("myCanvas");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    document
+        .getElementById("drawButton")
+        .addEventListener("click", () => {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            ctx.fillStyle = "#4f46e5";
+
+            ctx.beginPath();
+
+            ctx.arc(
+                300,
+                125,
+                80,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+
+            ctx.fillStyle = "white";
+
+            ctx.font = "bold 24px Arial";
+
+            ctx.textAlign = "center";
+
+            ctx.fillText(
+                "HTML",
+                300,
+                135
+            );
+
+        });
+
+
+    /* =========================
+       TEMPLATE
+    ========================== */
+
+    const templateButton =
+        document.getElementById("templateButton");
+
+    const template =
+        document.getElementById("learningTemplate");
+
+    const templateContainer =
+        document.getElementById("templateContainer");
+
+    templateButton.addEventListener("click", () => {
+
+        const clone =
+            template.content.cloneNode(true);
+
+        templateContainer.appendChild(clone);
+
+    });
+
+
+    /* =========================
+       DIALOG
+    ========================== */
+
+    const dialog =
+        document.getElementById("welcomeDialog");
+
+    document
+        .getElementById("openDialog")
+        .addEventListener("click", () => {
+
+            dialog.showModal();
+
+        });
+
+    document
+        .getElementById("closeDialog")
+        .addEventListener("click", () => {
+
+            dialog.close();
+
+        });
+
+
+    /* =========================
+       BACK TO TOP
+    ========================== */
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+
+        backToTop.style.display =
+            window.scrollY > 500
+                ? "block"
+                : "none";
+
+    });
+
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+    /* =========================
+       TAG CARD CLICK
+    ========================== */
+
+    tagCards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            const tag =
+                card.querySelector(".tag-name").textContent;
+
+            alert(
+                `${tag}\n\nExplore the HTML Reference Guide to learn more about this element.`
+            );
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
