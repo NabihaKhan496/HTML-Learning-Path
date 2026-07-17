@@ -155,6 +155,7 @@ This is my first HTML page.
 | `<html>` | The root element that contains the entire webpage. |
 | `<head>` | Stores page information such as the title and metadata. |
 | `<body>` | Contains all the visible content shown in the browser. |
+
 ⬆️ **Back to:** [Table of Contents](#-table-of-contents)
 
 ---
