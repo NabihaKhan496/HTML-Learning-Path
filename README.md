@@ -328,6 +328,11 @@ The `<h1>` to `<h6>` tags are used to create headings. `<h1>` is the largest and
 
 ```html
 <h1>Welcome to HTML</h1>
+<h2>Welcome to HTML</h2>
+<h3>Welcome to HTML</h3>
+<h4>Welcome to HTML</h4>
+<h5>Welcome to HTML</h5>
+<h6>Welcome to HTML</h6>
 ```
 
 ### Explanation
