@@ -155,6 +155,7 @@ This is my first HTML page.
 | `<html>` | The root element that contains the entire webpage. |
 | `<head>` | Stores page information such as the title and metadata. |
 | `<body>` | Contains all the visible content shown in the browser. |
+⬆️ **Back to:** [Table of Contents](#-table-of-contents)
 
 ---
 
@@ -277,12 +278,12 @@ The `<base>` tag sets a default URL or default target for all links on the webpa
 ### Example
 
 ```html
-<base href="https://example.com/" target="_blank">
+<base href="https://www.google.com/" target="_blank">
 ```
 
 ### Explanation
 
-All relative links on the page will use **https://example.com/** as their starting location and open in a new tab.
+All relative links on the page will use **https://www.google.com/** as their starting location and open in a new tab.
 
 ---
 
